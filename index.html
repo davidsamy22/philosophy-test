@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة اختبار الفلسفة والمنطق | أ/ ديفيد سامي</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: 
+                radial-gradient(circle at 20% 15%, rgba(126, 34, 206, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(217, 119, 6, 0.35) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, #030014 100%),
+                linear-gradient(135deg, #0f0728 0%, #2e1065 50%, #030014 100%);
+            background-attachment: fixed;
+            color: #f3f4f6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.90);
+            backdrop-filter: blur(25px);
+            border: 1.5px solid rgba(245, 158, 11, 0.35);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(147, 51, 234, 0.25);
+        }
+        @keyframes floatOrb {
+            0% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+            100% { transform: translateY(0px) scale(1); }
+        }
+        .floating-orb {
+            animation: floatOrb 8s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="flex flex-col justify-between p-4 selection:bg-amber-500 selection:text-slate-950 relative">
+
+    <!-- دوائر مجرة فخمة -->
+    <div class="absolute top-10 right-10 w-72 h-72 bg-purple-600/20 rounded-full blur-3xl pointer-events-none floating-orb"></div>
+    <div class="absolute bottom-10 left-10 w-80 h-80 bg-amber-500/15 rounded-full blur-3xl pointer-events-none floating-orb" style="animation-delay: 4s;"></div>
+
+    <!-- الهيدر العلوي -->
+    <header class="w-full max-w-5xl mx-auto flex items-center justify-between py-4 border-b border-amber-500/20 mb-6 z-10">
+        <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-purple-600 p-0.5 shadow-xl flex items-center justify-center">
+                <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center text-amber-400 text-xl font-black">
+                    🏛️
+                </div>
+            </div>
+            <div>
+                <h1 class="text-sm sm:text-base font-black text-amber-400">منصة اختبار الفلسفة والمنطق</h1>
+                <p class="text-xs text-slate-400">تحت إشراف المستر عمرو • تطوير: <span class="text-white font-bold">ديفيد سامي</span></p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="showPage('student-gate')" class="px-3 py-2 rounded-xl bg-slate-900/80 border border-slate-700 text-amber-300 hover:bg-slate-800 text-xs font-bold transition shadow-md">
+                📚 الواجهة الرئيسية
+            </button>
+            <button onclick="openAdminLogin()" class="px-3 py-2 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/40 hover:bg-amber-500/30 text-xs font-bold transition flex items-center gap-1.5 shadow-md">
+                🔒 لوحة المستر
+            </button>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="w-full max-w-4xl mx-auto flex-grow flex items-center justify-center z-10">
+
+        <!-- 1. واجهة الطالب الأساسية -->
+        <section id="student-gate" class="w-full max-w-lg glass-card rounded-3xl p-6 sm:p-8 text-center space-y-6">
+            <div class="w-24 h-24 mx-auto rounded-3xl bg-gradient-to-tr from-amber-500/30 via-purple-600/30 to-indigo-600/30 border-2 border-amber-400/80 shadow-2xl flex items-center justify-center text-4xl transform hover:scale-105 transition duration-300">
+                ✨🧠
+            </div>
+            
+            <h2 class="text-xl sm:text-2xl font-black text-amber-400 leading-tight">«اعرف نفسك بنفسك.. واختبر عقلك في ميزان الحكمة»</h2>
+            
+            <p class="text-xs text-slate-300 leading-relaxed">
+                تحت إشراف الأستاذ عمرو (كبير معلمي الفلسفة). تقييم شامل يغطي: علاقة الفلسفة بالدين والعلم، الموضوع والمنهج والغاية، والقضايا المنطقية والموضوع والمحمول والرابطة.
+            </p>
+
+            <div class="grid grid-cols-2 gap-3">
+                <div class="p-3.5 rounded-2xl bg-slate-950/90 border border-amber-500/30 text-center space-y-1 shadow-inner">
+                    <span class="text-lg sm:text-xl font-black text-amber-400 block">30 سؤالاً</span>
+                    <span class="text-[11px] text-slate-400 block">25 اختياري + 5 مقالي</span>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-slate-950/90 border border-rose-500/30 text-center space-y-1 shadow-inner">
+                    <span class="text-lg sm:text-xl font-black text-rose-400 block">30 دقيقة</span>
+                    <span class="text-[11px] text-slate-400 block">يُغلق تلقائياً بانتهائها</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-right">
+                <div>
+                    <label class="block text-xs font-bold text-amber-300 mb-1.5">ضع اسمك الثلاثي:</label>
+                    <input type="text" id="student-fullname-input" placeholder="اكتب اسمك الثلاثي هنا..."
+                        class="w-full px-4 py-3.5 rounded-xl bg-slate-950/90 border border-slate-700 focus:border-amber-400 focus:outline-none text-white text-sm font-bold shadow-inner">
+                </div>
+
+                <div class="p-4 rounded-xl bg-rose-950/40 border border-rose-500/40 text-right space-y-1 shadow-md">
+                    <p class="text-xs font-bold text-rose-300 flex items-center gap-1">
+                        <span>⚠️</span> تنبيه أمني صارم:
+                    </p>
+                    <p class="text-[11px] text-rose-200/90 leading-relaxed">
+                        بمجرد الضغط على "ابدأ الاختبار الآن"، يمنع الخروج من الصفحة أو فتح تبويب آخر. أي محاولة غش سيتم رصدها وفصل الاختبار فوراً مع تسجيل الـ IP وإرساله لمستر عمرو.
+                    </p>
+                </div>
+
+                <button onclick="startExamSession()" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black py-4 rounded-xl text-sm transition shadow-xl cursor-pointer flex items-center justify-center gap-2 transform hover:-translate-y-0.5">
+                    <span>🏛️</span> ابدأ اختبار الفلسفة الآن
+                </button>
+            </div>
+        </section>
+
+        <!-- 2. شاشة الاختبار الفعلي -->
+        <section id="exam-screen" class="hidden w-full max-w-3xl glass-card rounded-3xl p-6 sm:p-8 space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <span class="px-3 py-1 rounded bg-amber-500/20 text-amber-300 text-xs font-bold border border-amber-500/30">اختبار الفلسفة والمنطق الشامل</span>
+                <div class="flex items-center gap-3">
+                    <div class="px-3 py-1 rounded-lg bg-rose-500/20 text-rose-400 border border-rose-500/40 text-xs font-mono font-bold flex items-center gap-1.5 animate-pulse">
+                        ⏳ <span id="timer-display">30:00</span>
+                    </div>
+                    <span id="exam-progress-counter" class="text-xs font-mono text-slate-400"></span>
+                </div>
+            </div>
+            
+            <div class="space-y-2">
+                <span id="exam-q-type" class="text-xs font-bold text-cyan-400"></span>
+                <h3 id="exam-q-text" class="text-lg font-bold text-white leading-relaxed"></h3>
+            </div>
+
+            <div id="exam-mcq-container" class="space-y-2.5"></div>
+
+            <div id="exam-essay-container" class="hidden space-y-2">
+                <textarea id="exam-essay-input" rows="4" placeholder="اكتب إجابتك الفلسفية الوافية هنا..."
+                    class="w-full p-4 rounded-xl bg-slate-950/90 border border-slate-700 focus:border-amber-400 focus:outline-none text-white text-sm shadow-inner"></textarea>
+            </div>
+
+            <div class="flex justify-between pt-4 border-t border-slate-800">
+                <button onclick="prevExamQuestion()" id="prev-btn" class="px-5 py-2.5 rounded-xl bg-slate-800 text-slate-300 text-xs font-bold hover:bg-slate-700 transition">السابق</button>
+                <button onclick="nextExamQuestion()" id="next-btn" class="px-6 py-2.5 rounded-xl bg-amber-500 text-slate-950 text-xs font-black hover:bg-amber-400 transition cursor-pointer shadow-lg">السؤال التالي ➡️</button>
+            </div>
+        </section>
+
+        <!-- 3. شاشة التسليم -->
+        <section id="submitted-screen" class="hidden w-full max-w-md glass-card rounded-3xl p-8 text-center space-y-5">
+            <div id="submitted-icon" class="w-16 h-16 mx-auto rounded-2xl bg-emerald-500/20 border border-emerald-500 text-3xl flex items-center justify-center shadow-lg">
+                ✅
+            </div>
+            <h2 id="submitted-title" class="text-2xl font-black text-emerald-400">تم تسليم الاختبار بنجاح!</h2>
+            <p id="submitted-desc" class="text-xs text-slate-300 leading-relaxed">
+                تم حفظ إجاباتك ورصد عنوان الـ IP وإرسالها إلى لوحة المستر عمرو.
+            </p>
+            <div id="student-score-preview" class="p-4 rounded-xl bg-slate-950 border border-amber-500/30 text-amber-300 font-bold text-sm shadow-inner"></div>
+            <button onclick="showPage('student-gate')" class="w-full bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold py-3 rounded-xl text-xs transition shadow-md">
+                العودة للرئيسية
+            </button>
+        </section>
+
+        <!-- 4. دخول الأدمن -->
+        <section id="admin-login-screen" class="hidden w-full max-w-md glass-card rounded-3xl p-8 text-center space-y-5">
+            <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-500/20 border border-amber-400 text-3xl flex items-center justify-center shadow-lg">
+                🔐
+            </div>
+            <h2 class="text-2xl font-black text-amber-400">لوحة تحكم المستر عمرو</h2>
+            <p class="text-xs text-slate-400">أدخل كلمة المرور الخاصة بالمستر لمتابعة الطلاب وعناوين الـ IP</p>
+            <div class="space-y-3 text-right">
+                <input type="password" id="admin-password-input" placeholder="كلمة المرور" dir="ltr" autocomplete="off"
+                    onkeydown="if(event.key==='Enter') verifyAdminLogin()"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 focus:border-amber-400 focus:outline-none text-white text-center font-mono shadow-inner">
+                <p id="admin-login-error" class="hidden text-rose-400 text-xs font-bold text-center">❌ كلمة المرور غير صحيحة!</p>
+            </div>
+            <button onclick="verifyAdminLogin()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3 rounded-xl text-sm cursor-pointer shadow-lg">
+                دخول اللوحة 🔓
+            </button>
+        </section>
+
+        <!-- 5. لوحة التحكم المتطورة (مسح تلقائي عند الخروج) -->
+        <section id="admin-dashboard-screen" class="hidden w-full max-w-5xl glass-card rounded-3xl p-6 sm:p-8 space-y-6 text-right">
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
+                <div>
+                    <h2 class="text-xl font-black text-amber-400">لوحة تحكم المستر عمرو (متابعة الطلاب)</h2>
+                    <p class="text-xs text-slate-400">عرض الطلاب والمراجعة (تُمسح السجلات تلقائياً بمجرد خروجك).</p>
+                </div>
+                <div>
+                    <button onclick="exitAdminDashboard()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-300 shadow-md">
+                        خروج ومسح السجلات تلقائياً 🚪
+                    </button>
+                </div>
+            </div>
+
+            <!-- حقل بحث سريع عن طالب -->
+            <div class="flex items-center gap-3">
+                <input type="text" id="admin-search-input" oninput="renderAdminDashboard()" placeholder="بحث سريع باسم الطالب أو الـ IP..."
+                    class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:border-amber-400 focus:outline-none">
+            </div>
+
+            <!-- جدول ملخص الطلاب المتطور -->
+            <div class="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-950/80">
+                <table class="w-full text-right text-xs">
+                    <thead class="bg-slate-900 text-amber-400 border-b border-slate-800">
+                        <tr>
+                            <th class="p-3.5">اسم الطالب</th>
+                            <th class="p-3.5">عنوان IP</th>
+                            <th class="p-3.5">الحالة</th>
+                            <th class="p-3.5">الدرجة</th>
+                            <th class="p-3.5">وقت التسليم</th>
+                            <th class="p-3.5 text-center">الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-table-body" class="divide-y divide-slate-800/60 text-slate-300">
+                        <!-- يعبأ ديناميكياً -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- نافذة منبثقة لعرض تفاصيل إجابات الطالب عند الضغط على "عرض المزيد" -->
+            <div id="student-details-modal" class="hidden space-y-4 pt-4 border-t border-slate-800">
+                <div class="flex items-center justify-between">
+                    <h3 id="modal-student-name" class="text-base font-black text-amber-400"></h3>
+                    <button onclick="closeStudentDetails()" class="px-3 py-1 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 text-xs font-bold">إغلاق التفاصيل ✕</button>
+                </div>
+                <div id="modal-student-answers" class="space-y-3 max-h-[450px] overflow-y-auto pr-1"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- التذييل -->
+    <footer class="w-full max-w-5xl mx-auto text-center py-4 text-xs text-slate-400 border-t border-amber-500/10 mt-6 z-10">
+        <p>منصة الفلسفة والمنطق المؤمنة • إعداد وتطوير: <span class="text-amber-400 font-bold">ديفيد سامي</span> • إشراف: <span class="text-white font-bold">مستر عمرو</span></p>
+    </footer>
+
+    <script>
+        const philosophyQuestions = [
+            { type: "mcq", q: "1. تعرف الفلسفة بأنها محبة الحكمة، فما المعنى اللغوي لكلمة فلسفة (Philosophia)؟", options: ["حب السلطة", "حب الحكمة والمعرفة", "البحث عن المال", "دراسة الطبيعة وحدها"], correct: 1 },
+            { type: "mcq", q: "2. المبحث الذي يبحث في طبيعة الوجود المطلق وأصله يُعرف بـ:", options: ["الاكسيولوجيا", "الأنتولوجيا (الميتافيزيقا)", "الإبيستمولوجيا", "المنطق الشكلي"], correct: 1 },
+            { type: "mcq", q: "3. العلم الذي يدرس قوانين التفكير الصحيح ويعصم الذهن عن الوقوع في الخطأ هو:", options: ["علم النفس", "علم الاجتماع", "علم المنطق", "علم الأخلاق"], correct: 2 },
+            { type: "mcq", q: "4. أول من أطلق على نفسه لقب 'فيلسوف' بدلاً من حكيم تواضعاً لله هو:", options: ["أفلاطون", "أرسطو", "فيثاغورس", "سقراط"], correct: 2 },
+            { type: "mcq", q: "5. المبحث الفلسفي الذي يهتم بدراسة القيم (الحق، الخير، الجمال) هو:", options: ["الاكسيولوجيا", "الميتافيزيقا", "الإبيستمولوجيا", "الأنطولوجيا"], correct: 0 },
+            { type: "mcq", q: "6. القضية المنطقية التي تحكم بثبوت محمول لموضوع أو سلبه عنه دون شرط هي:", options: ["الشرطية المتصلة", "الشرطية المنفصلة", "القضية الحملية", "قضية الاستلزام"], correct: 2 },
+            { type: "mcq", q: "7. تبدأ الفلسفة دائماً بـ:", options: ["اليقين المطلق", "الدهشة والتساؤل", "التسليم بالأمر الواقع", "الجمود الفكري"], correct: 1 },
+            { type: "mcq", q: "8. نظرية المعرفة والبحث في أصلها ووسائلها وإمكاناتها تُعرف بـ:", options: ["الاكسيولوجيا", "الإبيستمولوجيا", "الميتافيزيقا", "السوسيولوجيا"], correct: 1 },
+            { type: "mcq", q: "9. الحدود المنطقية في القضية الحملية تنقسم إلى:", options: ["موضوع ومحمول فقط", "مقدم وتالي", "شرط وجواب", "موجبة وسالبة"], correct: 0 },
+            { type: "mcq", q: "10. خصائص الموقف الفلسفي تتضمن:", options: ["السطحية والجمود", "البصيرة والتساؤل واليقظة الدائمة", "التسليم بالمسلمات", "التقليد الأعمى"], correct: 1 },
+            { type: "mcq", q: "11. الشك المنهجي عند ديكارت غايته:", options: ["الوصول إلى الحقيقة واليقين", "الشك المطلق الدائم", "إنكار الأديان", "نشر الفوضى"], correct: 0 },
+            { type: "mcq", q: "12. التفكير الإنساني يتميز بأنه:", options: ["مفطور ومكتسب يعتمد على الخبرة", "جامد لا يتغير", "خاص بالعلماء فقط", "مرتبط بالحيوانات العليا"], correct: 0 },
+            { type: "mcq", q: "13. الاستدلال الرياضي يعتمد على:", options: ["التجربة المعملية", "الملاحظة الحسية", "الاستنباط من مقدمات مسلم بها", "الصدفة البحتة"], correct: 2 },
+            { type: "mcq", q: "14. الاستقراء الناقص عند بيكون يعتمد على:", options: ["فحص جميع الجزئيات استحالة", "فحص عينة ودراستها للتعميم", "المنطق الصوري البحت", "القياس الأرسطي"], correct: 1 },
+            { type: "mcq", q: "15. المنهج التجريبي في العلم الحديث مراته الأساسية:", options: ["الفرض والفن", "الملاحظة والتجربة والفرض والفحص", "النص المقدس", "الحدس الخالص"], correct: 1 },
+            { type: "mcq", q: "16. المقصود بالحد المنطقي هو:", options: ["الكلمة التي لا معنا لها", "اللفظ أو مجموعة الألفاظ التي تصلح موضوعاً أو محمولاً", "الجملة الإنشائية", "الفعل الماضي"], correct: 1 },
+            { type: "mcq", q: "17. القضية الشخصية في المنطق تُعامل معاملة:", options: ["القضية الكلية", "القضية الجزئية", "القضية المهملة", "القضية الشرطية"], correct: 1 },
+            { type: "mcq", q: "18. التقابل بين التناقض يختلف عن التقابل بين التضاد في أن التناقض:", options: ["يختلفان كيفاً ولا يختلفان كمّاً", "يختلفان كمّاً وكيفاً معاً", "يتفقان في الصدق والكذب معا", "لا علاقة له بالسور"], correct: 1 },
+            { type: "mcq", q: "19. القياس الأرسطي الصحيح يتألف من:", options: ["مقدمة واحدة ونتيجة", "مقدمتين (كبرى وصغرى) ونتيجة تلزم عنهما", "أربع مقدمات", "نتائج متعدبة دون مقدمات"], correct: 1 },
+            { type: "mcq", q: "20. أشكال القياس الأرسطي تُحدد بناءً على موقع:", options: ["الحد الاوسط في المقدمتين", "الموضوع في النتيجة", "المحمول في الكبرى", "الرابطة"], correct: 0 },
+            { type: "mcq", q: "21. شروط الشكل الأول من القياس تشمل:", options: ["إيجاب الصغرى وكلية الكبرى", "سلب المقدمتين", "جزئية الكبرى وصغرى سالبة", "انعدام الحد الأوسط"], correct: 0 },
+            { type: "mcq", q: "22. المغالطات الصورية في المنطق تحدث نتيجة:", options: ["مخالفة قواعد الاستدلال الصوري", "الخطأ في التجارب المعملية", "سوء الفهم اللغوي العام", "المبالغة في العواطف"], correct: 0 },
+            { type: "mcq", q: "23. المغالطات غير الصورية ترتبط بـ:", options: ["مضمون اللغة والدلالة والسياق", "الشكل الرمزي البحت", "قواعد القياس فقط", "الرياضيات البحتهة"], correct: 0 },
+            { type: "mcq", q: "24. العلاقة بين الفلسفة والدين هي:", options: ["علاقة تناقض تام والصراع", "علاقة تكامل وتوافق حول الحقيقة والغاية", "علاقة إلغاء", "لا علاقة بينهما إطلاقاً"], correct: 1 },
+            { type: "mcq", q: "25. الحقيقة الفلسفية تتميز بأنها:", options: ["ذاتية نسبية تأملية عقلية", "حسية معملية مطلقة", "ثابتة لا تقبل النقاش", "محدودة بزمان ومكان"], correct: 0 },
+            { type: "essay", q: "26. (فلسفة): وضح بمثال تفصيلي الفرق بين الموقف الفلسفي والموقف العادي تجاه ظاهرة كونية.", sampleAnswer: "الموقف العادي سطحي يعتمد على المألوف، أما الموقف الفلسفي تأملي نقدي يبحث عن العلل البعيدة." },
+            { type: "essay", q: "27. (منطق): استنتج أهمية دراسة قواعد علم المنطق بالنسبة للطالب في حياته اليومية.", sampleAnswer: "يساعد على تنمية التفكير النقدي، وعدم التسرع في إصدار الأحكام، واكتشاف المغالطات." },
+            { type: "essay", q: "28. (فلسفة): قارن باختصار بين خصائص الموقف الفلسفي (الدهشة والتساؤل).", sampleAnswer: "الدهشة هزة وجدانية تدفع للتساؤل المستمر وعدم قبول الأمور كمسلمات جاهزة." },
+            { type: "essay", q: "29. (منطق): ما مقصود أرسطو بالمنطق باعتباره 'آلة العلم' (الأبليجانون)؟", sampleAnswer: "لأنه القانون العام الذي يرتكن إليه الفكر الصحيح في كافة العلوم." },
+            { type: "essay", q: "30. (فلسفة): استنتج كيف تساهم الفلسفة في ترسيخ روح التسامح وقبول الرأي الآخر.", sampleAnswer: "من خلال الحوار العقلي، واحترام العقول، وإدراك نسبية الحقيقة البشرية." }
+        ];
+
+        let recordsDatabase = JSON.parse(localStorage.getItem('amr_philosophy_records_final') || '[]');
+
+        let currentStudentName = "";
+        let currentQIndex = 0;
+        let studentAnswers = [];
+        let isExamActive = false;
+        let detectedIP = "جاري جلب الـ IP...";
+        let cheatTriggered = false;
+        let timeLeft = 1800;
+        let examTimerInterval = null;
+
+        async function fetchClientIP() {
+            try {
+                const res = await fetch('https://api.ipify.org?format=json');
+                const data = await res.json();
+                detectedIP = data.ip || "192.168.1.88 (Local)";
+            } catch (e) {
+                detectedIP = "192.168.1." + Math.floor(Math.random() * 200 + 10);
+            }
+        }
+        fetchClientIP();
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden && isExamActive && !cheatTriggered) {
+                handleCheatAttempt("مغادرة تبويب الاختبار أو فتح تطبيق خارجي");
+            }
+        });
+
+        window.addEventListener("blur", () => {
+            if (isExamActive && !cheatTriggered) {
+                handleCheatAttempt("فقدان التركيز عن نافذة الاختبار");
+            }
+        });
+
+        function handleCheatAttempt(reason) {
+            clearInterval(examTimerInterval);
+            cheatTriggered = true;
+            isExamActive = false;
+            saveCurrentEssayIfAny();
+            finalizeExamSubmission("cheated", reason);
+
+            showPage('submitted-screen');
+            document.getElementById('submitted-icon').className = "w-16 h-16 mx-auto rounded-2xl bg-rose-500/25 border border-rose-500 text-3xl flex items-center justify-center animate-bounce";
+            document.getElementById('submitted-icon').textContent = "🚨";
+            document.getElementById('submitted-title').textContent = "تم إغلاق الاختبار فوراً بسبب محاولة الغش!";
+            document.getElementById('submitted-title').className = "text-2xl font-black text-rose-400";
+            document.getElementById('submitted-desc').innerHTML = `
+                رصد نظام الحماية: <strong class="text-white">${reason}</strong>.
+                <br>تم تسجيل عنوان الـ <strong class="text-rose-300 font-mono">IP (${detectedIP})</strong> وإرسال التقرير لمستر عمرو!
+            `;
+            document.getElementById('student-score-preview').innerHTML = "الدرجة: 0 (موقوف بسبب الغش)";
+        }
+
+        function showPage(pageId) {
+            ['student-gate', 'exam-screen', 'submitted-screen', 'admin-login-screen', 'admin-dashboard-screen'].forEach(id => {
+                const el = document.getElementById(id);
+                if(el) el.classList.add('hidden');
+            });
+            const target = document.getElementById(pageId);
+            if(target) target.classList.remove('hidden');
+            if(pageId === 'admin-dashboard-screen') {
+                renderAdminDashboard();
+            }
+        }
+
+        function startExamSession() {
+            const nameInput = document.getElementById('student-fullname-input').value.trim();
+            if (!nameInput) { alert("برجاء إدخال اسمك الثلاثي أولاً!"); return; }
+
+            currentStudentName = nameInput;
+            currentQIndex = 0;
+            cheatTriggered = false;
+            isExamActive = true;
+            timeLeft = 1800;
+
+            studentAnswers = philosophyQuestions.map(() => ({ mcqSelected: null, essayText: "" }));
+
+            showPage('exam-screen');
+            renderExamQuestion();
+            startTimer();
+        }
+
+        function startTimer() {
+            clearInterval(examTimerInterval);
+            examTimerInterval = setInterval(() => {
+                if (!isExamActive) { clearInterval(examTimerInterval); return; }
+                timeLeft--;
+                let m = Math.floor(timeLeft / 60);
+                let s = timeLeft % 60;
+                const timerDisp = document.getElementById('timer-display');
+                if(timerDisp) timerDisp.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(examTimerInterval);
+                    isExamActive = false;
+                    saveCurrentEssayIfAny();
+                    finalizeExamSubmission("timeout", "انتهى الوقت المحدد (30 دقيقة)");
+                    showPage('submitted-screen');
+                    document.getElementById('submitted-icon').className = "w-16 h-16 mx-auto rounded-2xl bg-amber-500/25 border border-amber-400 text-3xl flex items-center justify-center";
+                    document.getElementById('submitted-icon').textContent = "⏰";
+                    document.getElementById('submitted-title').textContent = "انتهى وقت الاختبار!";
+                    document.getElementById('submitted-title').className = "text-2xl font-black text-amber-400";
+                    document.getElementById('submitted-desc').innerHTML = "انقضت النصف ساعة المخصصة وتم تسليم إجاباتك تلقائياً.";
+                    const score = calculateTotalScore();
+                    document.getElementById('student-score-preview').innerHTML = `درجتك الأولية: <span class="text-amber-400 font-bold">${score}</span>`;
+                }
+            }, 1000);
+        }
+
+        function calculateTotalScore() {
+            let correct = 0;
+            philosophyQuestions.forEach((q, idx) => {
+                if (q.type === 'mcq' && studentAnswers[idx] && studentAnswers[idx].mcqSelected === q.correct) correct++;
+                if (q.type === 'essay' && studentAnswers[idx] && studentAnswers[idx].essayManualScore === 1) correct++;
+            });
+            return correct;
+        }
+
+        function renderExamQuestion() {
+            const q = philosophyQuestions[currentQIndex];
+            if(!q) return;
+
+            const prog = document.getElementById('exam-progress-counter');
+            if(prog) prog.textContent = `السؤال ${currentQIndex + 1} من ${philosophyQuestions.length}`;
+            
+            const qType = document.getElementById('exam-q-type');
+            if(qType) qType.textContent = q.type === 'mcq' ? "اختيار من متعدد" : "سؤال مقالي";
+            
+            const qText = document.getElementById('exam-q-text');
+            if(qText) qText.textContent = q.q;
+
+            const mcqBox = document.getElementById('exam-mcq-container');
+            const essayBox = document.getElementById('exam-essay-container');
+
+            if (q.type === 'mcq') {
+                if(mcqBox) mcqBox.classList.remove('hidden');
+                if(essayBox) essayBox.classList.add('hidden');
+                if(mcqBox) {
+                    mcqBox.innerHTML = "";
+                    q.options.forEach((opt, idx) => {
+                        const isSelected = studentAnswers[currentQIndex] && studentAnswers[currentQIndex].mcqSelected === idx;
+                        const btn = document.createElement('button');
+                        btn.type = "button";
+                        btn.className = `w-full text-right p-3.5 rounded-xl border text-sm font-bold transition cursor-pointer shadow-md ${isSelected ? 'bg-amber-500/25 border-amber-400 text-amber-300' : 'bg-slate-900/90 border-slate-700 text-white hover:border-amber-500/50'}`;
+                        btn.textContent = opt;
+                        btn.onclick = () => { 
+                            if(!studentAnswers[currentQIndex]) studentAnswers[currentQIndex] = {};
+                            studentAnswers[currentQIndex].mcqSelected = idx; 
+                            renderExamQuestion(); 
+                        };
+                        mcqBox.appendChild(btn);
+                    });
+                }
+            } else {
+                if(mcqBox) mcqBox.classList.add('hidden');
+                if(essayBox) essayBox.classList.remove('hidden');
+                const textarea = document.getElementById('exam-essay-input');
+                if(textarea) {
+                    textarea.value = (studentAnswers[currentQIndex] && studentAnswers[currentQIndex].essayText) || "";
+                    textarea.oninput = (e) => { 
+                        if(!studentAnswers[currentQIndex]) studentAnswers[currentQIndex] = {};
+                        studentAnswers[currentQIndex].essayText = e.target.value; 
+                    };
+                }
+            }
+
+            const prevBtn = document.getElementById('prev-btn');
+            if(prevBtn) prevBtn.style.visibility = currentQIndex === 0 ? 'hidden' : 'visible';
+            
+            const nextBtn = document.getElementById('next-btn');
+            if(nextBtn) {
+                if (currentQIndex === philosophyQuestions.length - 1) {
+                    nextBtn.textContent = "تسليم الاختبار النهائي 🏁";
+                    nextBtn.className = "px-6 py-2.5 rounded-xl bg-emerald-500 text-slate-950 text-xs font-black hover:bg-emerald-400 transition cursor-pointer shadow-lg";
+                } else {
+                    nextBtn.textContent = "السؤال التالي ➡️";
+                    nextBtn.className = "px-6 py-2.5 rounded-xl bg-amber-500 text-slate-950 text-xs font-black hover:bg-amber-400 transition cursor-pointer shadow-lg";
+                }
+            }
+        }
+
+        function saveCurrentEssayIfAny() {
+            const q = philosophyQuestions[currentQIndex];
+            if (q && q.type === 'essay') {
+                const textarea = document.getElementById('exam-essay-input');
+                if (textarea) {
+                    if(!studentAnswers[currentQIndex]) studentAnswers[currentQIndex] = {};
+                    studentAnswers[currentQIndex].essayText = textarea.value;
+                }
+            }
+        }
+
+        function prevExamQuestion() {
+            saveCurrentEssayIfAny();
+            if (currentQIndex > 0) { currentQIndex--; renderExamQuestion(); }
+        }
+
+        function nextExamQuestion() {
+            saveCurrentEssayIfAny();
+            if (currentQIndex < philosophyQuestions.length - 1) {
+                currentQIndex++; renderExamQuestion();
+            } else {
+                clearInterval(examTimerInterval);
+                isExamActive = false;
+                finalizeExamSubmission("completed", "أتم الطالب الاختبار بنجاح");
+                showPage('submitted-screen');
+                const score = calculateTotalScore();
+                const icon = document.getElementById('submitted-icon');
+                if(icon) {
+                    icon.className = "w-16 h-16 mx-auto rounded-2xl bg-emerald-500/25 border border-emerald-500 text-3xl flex items-center justify-center shadow-lg";
+                    icon.textContent = "✅";
+                }
+                const title = document.getElementById('submitted-title');
+                if(title) {
+                    title.textContent = "تم تسليم الاختبار بنجاح!";
+                    title.className = "text-2xl font-black text-emerald-400";
+                }
+                const desc = document.getElementById('submitted-desc');
+                if(desc) desc.textContent = "تم حفظ إجاباتك ورصد درجتك وعنوان الـ IP وإرسالها لمستر عمرو.";
+                
+                const preview = document.getElementById('student-score-preview');
+                if(preview) preview.innerHTML = `درجتك الحالية: <span class="text-amber-400 font-bold">${score}</span>`;
+            }
+        }
+
+        function finalizeExamSubmission(status, note) {
+            const formattedAnswers = studentAnswers.map(ans => ({ ...(ans || {}), essayManualScore: 0, essayGradedStatus: 'pending' }));
+            const score = calculateTotalScore();
+            const record = {
+                id: Date.now(),
+                studentName: currentStudentName,
+                ipAddress: detectedIP,
+                status: status, 
+                note: note,
+                timestamp: new Date().toLocaleTimeString('ar-EG'),
+                score: score,
+                answers: formattedAnswers
+            };
+            recordsDatabase.unshift(record);
+            localStorage.setItem('amr_philosophy_records_final', JSON.stringify(recordsDatabase));
+        }
+
+        function openAdminLogin() {
+            if (isExamActive) return;
+            const passInput = document.getElementById('admin-password-input');
+            if(passInput) passInput.value = "";
+            const err = document.getElementById('admin-login-error');
+            if(err) err.classList.add('hidden');
+            showPage('admin-login-screen');
+        }
+
+        function verifyAdminLogin() {
+            const passInput = document.getElementById('admin-password-input');
+            const pass = passInput ? passInput.value.trim() : "";
+            if (pass === "Mr-Amr-Philosophy1Secondry") {
+                showPage('admin-dashboard-screen');
+            } else {
+                const err = document.getElementById('admin-login-error');
+                if(err) err.classList.remove('hidden');
+            }
+        }
+
+        function exitAdminDashboard() {
+            recordsDatabase = [];
+            localStorage.removeItem('amr_philosophy_records_final');
+            closeStudentDetails();
+            showPage('student-gate');
+        }
+
+        function viewStudentDetails(recordId) {
+            const rec = recordsDatabase.find(r => r.id === recordId);
+            if (!rec) return;
+
+            const nameEl = document.getElementById('modal-student-name');
+            if(nameEl) nameEl.textContent = `تفاصيل إجابات الطالب: ${rec.studentName} (${rec.ipAddress})`;
+            
+            const container = document.getElementById('modal-student-answers');
+            if(!container) return;
+            container.innerHTML = "";
+
+            philosophyQuestions.forEach((q, qIdx) => {
+                const ans = rec.answers[qIdx] || {};
+                if (q.type === 'mcq') {
+                    const userChoiceText = ans.mcqSelected !== null && ans.mcqSelected !== undefined ? q.options[ans.mcqSelected] : "لم يجيب";
+                    const isRight = ans.mcqSelected === q.correct;
+                    container.innerHTML += `<div class="p-3 rounded-xl bg-slate-950 text-xs space-y-1 border border-slate-800"><p class="font-bold text-slate-300">س${qIdx+1}: ${q.q}</p><p class="text-slate-400">إجابة الطالب: <span class="${isRight ? 'text-emerald-400 font-bold' : 'text-rose-400 font-bold'}">${userChoiceText}</span></p></div>`;
+                } else {
+                    const statusColor = ans.essayGradedStatus === 'correct' ? 'border-emerald-500 bg-emerald-950/20' : (ans.essayGradedStatus === 'incorrect' ? 'border-rose-500 bg-rose-950/20' : 'border-slate-800 bg-slate-950');
+                    container.innerHTML += `<div class="p-3.5 rounded-xl ${statusColor} text-xs space-y-2 border">
+                        <div class="flex items-center justify-between"><p class="font-bold text-slate-200">س${qIdx+1} (مقالي): ${q.q}</p>
+                        <div class="flex items-center gap-1.5"><button onclick="setEssayGradeByAdmin(${rec.id}, ${qIdx}, true)" class="px-2 py-0.5 rounded bg-emerald-600/30 text-emerald-300 font-bold cursor-pointer">✅ صحيح (+1)</button><button onclick="setEssayGradeByAdmin(${rec.id}, ${qIdx}, false)" class="px-2 py-0.5 rounded bg-rose-600/30 text-rose-300 font-bold cursor-pointer">❌ خطأ (0)</button></div></div>
+                        <div class="p-2 rounded bg-slate-900 text-slate-200"><strong>إجابة الطالب:</strong> ${ans.essayText || "لا توجد إجابة"}</div>
+                        <div class="p-2 rounded bg-amber-500/10 text-amber-300"><strong>النموذجي:</strong> ${q.sampleAnswer}</div>
+                    </div>`;
+                }
+            });
+
+            const modal = document.getElementById('student-details-modal');
+            if(modal) {
+                modal.classList.remove('hidden');
+                modal.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function closeStudentDetails() {
+            const modal = document.getElementById('student-details-modal');
+            if(modal) modal.classList.add('hidden');
+        }
+
+        function setEssayGradeByAdmin(recordId, qIdx, isCorrect) {
+            const rec = recordsDatabase.find(r => r.id === recordId);
+            if (!rec) return;
+            if(!rec.answers[qIdx]) rec.answers[qIdx] = {};
+            rec.answers[qIdx].essayManualScore = isCorrect ? 1 : 0;
+            rec.answers[qIdx].essayGradedStatus = isCorrect ? 'correct' : 'incorrect';
+            
+            let total = 0;
+            philosophyQuestions.forEach((q, idx) => {
+                if (q.type === 'mcq' && rec.answers[idx] && rec.answers[idx].mcqSelected === q.correct) total++;
+                if (q.type === 'essay' && rec.answers[idx] && rec.answers[idx].essayManualScore === 1) total++;
+            });
+            rec.score = total;
+            localStorage.setItem('amr_philosophy_records_final', JSON.stringify(recordsDatabase));
+            viewStudentDetails(recordId);
+            renderAdminDashboard();
+        }
+
+        function renderAdminDashboard() {
+            const tableBody = document.getElementById('admin-table-body');
+            if(!tableBody) return;
+            tableBody.innerHTML = "";
+
+            const searchInput = document.getElementById('admin-search-input');
+            const searchQuery = searchInput ? searchInput.value.toLowerCase() : "";
+            const filteredRecords = recordsDatabase.filter(rec => rec.studentName.toLowerCase().includes(searchQuery) || rec.ipAddress.toLowerCase().includes(searchQuery));
+
+            if (filteredRecords.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-slate-400">📭 لا يوجد طلاب مسجلين مطابقة للبحث.</td></tr>`;
+                return;
+            }
+
+            filteredRecords.forEach((rec) => {
+                const isCheat = rec.status === 'cheated';
+                let statusBadge = `<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">أتم الاختبار</span>`;
+                if (isCheat) statusBadge = `<span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 font-bold border border-rose-500/30">موقوف غش</span>`;
+
+                const row = document.createElement('tr');
+                row.className = "hover:bg-slate-900/65 transition";
+                row.innerHTML = `
+                    <td class="p-3.5 font-bold text-white">${rec.studentName}</td>
+                    <td class="p-3.5 font-mono text-cyan-400">${rec.ipAddress}</td>
+                    <td class="p-3.5">${statusBadge}</td>
+                    <td class="p-3.5 font-black text-amber-400">${rec.score} / ${philosophyQuestions.length}</td>
+                    <td class="p-3.5 text-slate-400">${rec.timestamp}</td>
+                    <td class="p-3.5 text-center">
+                        <button onclick="viewStudentDetails(${rec.id})" class="px-3 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30 font-bold cursor-pointer">عرض المزيد 🔍</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html>
